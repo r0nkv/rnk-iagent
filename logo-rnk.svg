@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 200" role="img" aria-label="RNK">
+  <defs>
+    <linearGradient id="rnkLegGrad" x1="0" y1="0" x2="0.4" y2="1">
+      <stop offset="0" stop-color="#5f8cff"/>
+      <stop offset="1" stop-color="#9a6cff"/>
+    </linearGradient>
+  </defs>
+  <!-- R: bowl with true hole (evenodd), stem, diagonal leg -->
+  <path fill="#f5f5f7" fill-rule="evenodd" d="M10,10 H150 V104 H10 Z M70,32 H116 V82 H70 Z"/>
+  <rect fill="#f5f5f7" x="10" y="10" width="36" height="180"/>
+  <polygon fill="#f5f5f7" points="46,104 96,104 150,190 106,190"/>
+  <!-- N left stem -->
+  <polygon fill="#f5f5f7" points="170,10 206,10 206,190 170,190"/>
+  <!-- N diagonal, down to the shared N/K vertex -->
+  <polygon fill="#f5f5f7" points="170,10 206,10 286,90 250,90"/>
+  <!-- shared stem: N's right stem = K's stem -->
+  <polygon fill="#f5f5f7" points="250,90 286,90 286,190 250,190"/>
+  <!-- K upper arm, continues up from the shared stem -->
+  <polygon fill="#f5f5f7" points="250,90 286,90 476,10 440,10"/>
+  <!-- K leg: detached fragment, violet gradient -->
+  <polygon fill="url(#rnkLegGrad)" points="296,112 338,96 422,190 380,190"/>
+</svg>
