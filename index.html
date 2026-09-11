@@ -15,6 +15,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="chat.css">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -43,6 +44,7 @@
       <span class="nav-toggle__bar"></span>
     </button>
     <nav class="nav" id="site-nav" aria-label="Principal">
+      <a href="#asistente">Consultar</a>
       <a href="#como-funciona">Cómo funciona</a>
       <a href="#soluciones">Soluciones</a>
       <a href="#proceso">Proceso</a>
@@ -65,19 +67,38 @@
   <section class="hero" id="inicio">
     <canvas id="hero-canvas" class="hero__canvas" aria-hidden="true"></canvas>
     <div class="hero__vignette" aria-hidden="true"></div>
-    <div class="container">
-      <p class="hero__eyebrow">RNK — Automatización con Inteligencia Artificial</p>
-      <h1 class="hero__title">Agentes de IA que automatizan lo que tu negocio hace todos los días.</h1>
-      <p class="hero__subtitle">Diseño e implemento Agentes de IA que atienden clientes, califican oportunidades, ejecutan tareas y conectan tus procesos. La IA no solo responde. Ejecuta.</p>
-      <div class="hero__actions">
-        <a class="btn btn--primary" href="https://wa.me/56935443498?text=Hola%20RNK%2C%20quiero%20descubrir%20qu%C3%A9%20puedo%20automatizar%20en%20mi%20negocio" target="_blank" rel="noopener noreferrer">
-          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.2h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.13-2.9-7-1.88-1.87-4.36-2.91-7.06-2.91zm0 18.15h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.22 8.22 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.26-8.24 2.2 0 4.27.86 5.83 2.42a8.18 8.18 0 0 1 2.41 5.83c0 4.55-3.7 8.24-8.25 8.24zm4.52-6.17c-.25-.12-1.47-.72-1.7-.81-.23-.08-.39-.12-.56.13-.17.25-.64.81-.78.97-.14.17-.29.19-.53.06-.25-.12-1.04-.38-1.99-1.22-.73-.66-1.23-1.46-1.37-1.71-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.12-.14.16-.25.25-.41.08-.17.04-.31-.02-.44-.06-.12-.56-1.35-.77-1.85-.2-.48-.4-.42-.56-.42-.14-.01-.31-.01-.48-.01a.93.93 0 0 0-.67.31c-.23.25-.87.85-.87 2.08 0 1.22.89 2.4 1.02 2.57.12.17 1.75 2.67 4.24 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.14-1.18-.06-.1-.23-.16-.48-.29z"/></svg>
-          Descubre qué puedes automatizar
-        </a>
-        <a class="btn btn--secondary" href="#como-funciona">
-          Ver cómo funciona
-        </a>
+    <div class="container hero-layout">
+      <div class="hero-copy">
+        <p class="hero__eyebrow">RNK · Agentes de inteligencia artificial</p>
+        <h1 class="hero__title">La IA no solo responde. <span>Ejecuta.</span></h1>
+        <p class="hero__subtitle">Automatiza la atención, el seguimiento y las tareas de tu negocio. Cuéntanos qué necesitas y descubre por dónde empezar.</p>
+        <a class="hero-explore" href="#como-funciona">Descubre cómo funciona <span aria-hidden="true">↓</span></a>
       </div>
+      <section class="assistant" id="asistente" aria-labelledby="assistant-title">
+        <header class="assistant-header">
+          <span class="assistant-mark" aria-hidden="true">R</span>
+          <div><h2 id="assistant-title">Hablemos de tu negocio</h2><p>Asistente virtual de RNK</p></div>
+          <span class="assistant-status" id="assistant-state">Vista previa</span>
+        </header>
+        <div class="assistant-messages" id="chat-messages" role="log" aria-live="polite" aria-relevant="additions" aria-label="Conversación con el asistente" tabindex="0">
+          <div class="chat-message chat-message--assistant"><p>Hola, soy el asistente de RNK.</p><p>¿Qué tarea de tu negocio te gustaría automatizar?</p></div>
+        </div>
+        <div class="assistant-suggestions" aria-label="Ideas para tu consulta">
+          <button type="button" data-prompt="Quiero automatizar las consultas que recibo de mis clientes.">Atender clientes</button>
+          <button type="button" data-prompt="Quiero automatizar el seguimiento de mis oportunidades de venta.">Mejorar el seguimiento</button>
+          <button type="button" data-prompt="Me gustaría saber qué tareas de mi negocio puedo automatizar.">Explorar ideas</button>
+        </div>
+        <form class="chat-composer" id="chat-form">
+          <label class="sr-only" for="chat-input">Escribe tu consulta</label>
+          <textarea id="chat-input" name="message" rows="1" maxlength="2000" placeholder="Cuéntame qué necesitas…" required aria-describedby="chat-notice"></textarea>
+          <button id="chat-send" type="submit" aria-label="Enviar consulta"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 7-7 7 7M12 5v14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        </form>
+        <p class="chat-notice" id="chat-notice" role="status">La IA aún no está conectada. Puedes contactarnos por WhatsApp.</p>
+        <div class="assistant-contact">
+          <button type="button" class="contact-choice" data-open-consultation><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 4H5v17h14V4h-3M8 3h8v4H8zM8 12h8M8 16h5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>Solicitar asesoría</button>
+          <a class="contact-choice contact-choice--wa" href="https://wa.me/56935443498?text=Hola%2C%20vengo%20desde%20la%20web%20de%20RNK.%20Me%20interesa%20una%20asesor%C3%ADa%20para%20automatizar%20mi%20negocio." target="_blank" rel="noopener noreferrer">Hablar por WhatsApp <span aria-hidden="true">↗</span></a>
+        </div>
+      </section>
     </div>
   </section>
 
@@ -366,6 +387,27 @@
   <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.2h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.13-2.9-7-1.88-1.87-4.36-2.91-7.06-2.91zm0 18.15h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.22 8.22 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.26-8.24 2.2 0 4.27.86 5.83 2.42a8.18 8.18 0 0 1 2.41 5.83c0 4.55-3.7 8.24-8.25 8.24zm4.52-6.17c-.25-.12-1.47-.72-1.7-.81-.23-.08-.39-.12-.56.13-.17.25-.64.81-.78.97-.14.17-.29.19-.53.06-.25-.12-1.04-.38-1.99-1.22-.73-.66-1.23-1.46-1.37-1.71-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.12-.14.16-.25.25-.41.08-.17.04-.31-.02-.44-.06-.12-.56-1.35-.77-1.85-.2-.48-.4-.42-.56-.42-.14-.01-.31-.01-.48-.01a.93.93 0 0 0-.67.31c-.23.25-.87.85-.87 2.08 0 1.22.89 2.4 1.02 2.57.12.17 1.75 2.67 4.24 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.14-1.18-.06-.1-.23-.16-.48-.29z"/></svg>
 </a>
 
+<dialog class="consultation-dialog" id="consultation-dialog" aria-labelledby="consultation-title" aria-describedby="consultation-description">
+  <button type="button" class="dialog-close" id="close-consultation" aria-label="Cerrar formulario">×</button>
+  <p class="consultation-kicker">Conversemos sobre tu proyecto</p>
+  <h2 id="consultation-title">Tu próxima automatización<br>empieza aquí.</h2>
+  <p id="consultation-description">Cuéntanos lo esencial. José revisará tu solicitud para orientarte personalmente.</p>
+  <form id="consultation-form">
+    <div class="consultation-grid">
+      <label>Tu nombre <input name="name" autocomplete="name" maxlength="100" required placeholder="¿Cómo te llamas?"></label>
+      <label>Empresa o negocio <input name="company" autocomplete="organization" maxlength="120" placeholder="Nombre de tu negocio (opcional)"></label>
+    </div>
+    <label>Correo o WhatsApp <input name="contact" autocomplete="email" maxlength="150" required placeholder="Correo o número con código de país"></label>
+    <label>¿Qué necesitas automatizar? <textarea name="need" rows="4" maxlength="2000" required placeholder="Por ejemplo: recibo muchas consultas por WhatsApp y quiero responder más rápido."></textarea></label>
+    <label class="consent"><input name="consent" type="checkbox" required> <span>Autorizo a RNK a usar estos datos para responder mi solicitud.</span></label>
+    <p class="form-feedback" id="form-feedback" role="status"></p>
+    <button class="btn btn--primary consultation-submit" type="submit" id="consultation-submit">Continuar por WhatsApp <span aria-hidden="true">↗</span></button>
+    <a class="form-recovery" id="form-recovery" target="_blank" rel="noopener noreferrer" hidden>Abrir WhatsApp con mi solicitud</a>
+    <p class="form-footnote" id="form-footnote">Revisa los datos y continúa en WhatsApp para enviarlos. No se enviará nada hasta que confirmes allí.</p>
+  </form>
+</dialog>
+<script src="chat-config.js"></script>
+<script src="chat.js"></script>
 <script src="hero-network.js"></script>
 <script src="script.js"></script>
 </body>
